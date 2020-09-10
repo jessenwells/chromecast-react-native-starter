@@ -10,7 +10,9 @@ import {
   REACT_APP_ID,
 } from '@env'
 
-var config = {
+// need .env file for firebase authentication
+
+const config = {
   apiKey: REACT_APP_API_KEY,
   authDomain: REACT_APP_AUTH,
   databaseURL: REACT_APP_DB_URL,
@@ -22,6 +24,6 @@ var config = {
 
 firebase.initializeApp(config)
 
-let FirebaseStorage = firebase.storage()
+const FirebaseStorage = firebase.storage()
 
 export default FirebaseStorage

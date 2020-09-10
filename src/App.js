@@ -7,22 +7,23 @@ const App = () => {
   const [videoPath, setVideoPath] = useState()
   const [imagePath, setImagePath] = useState()
 
-  //firebase
+  // firebase-storage
   const storage = FirebaseStorage.ref()
   const video = storage.child('firebase-storage-video.mp4')
   const image = storage.child('firebase-storage-video.jpg')
   video.getDownloadURL().then((res) => setVideoPath(res))
   image.getDownloadURL().then((res) => setImagePath(res))
 
+  // react-native-google-cast
   startCast = (video, image, title, subtitle, duration, currentTime, mediaType) => {
     GoogleCast.castMedia({
-      mediaUrl: video, // Stream media video uri
-      imageUrl: image, // Image video representative uri
-      title: title, // Media main title
-      subtitle: subtitle, // Media subtitle
-      streamDuration: duration, // Stream duration in seconds
-      contentType: mediaType, // Optional media type, default is 'video/mp4'
-      playPosition: currentTime, // Stream play position in seconds
+      mediaUrl: video, // stream media video uri
+      imageUrl: image, // image video representative uri
+      title: title, // media main title
+      subtitle: subtitle, // media subtitle
+      streamDuration: duration, // stream duration in seconds
+      contentType: mediaType, // optional media type, default is 'video/mp4'
+      playPosition: currentTime, // stream play position in seconds
     })
   }
 
@@ -33,7 +34,7 @@ const App = () => {
       <ScrollView contentContainerStyle={styles.scrollView}>
         {[...Array(5)].map((_, i) => (
           <TouchableNativeFeedback key={i} onPress={() => this.startCast(videoPath, imagePath, _, _, _, _, 'video/mp4')}>
-            <Image source={{ uri: imagePath }} style={{ width: '100%', height: 350, marginBottom: 25 }} />
+            <Image source={{ uri: imagePath }} style={styles.image} />
           </TouchableNativeFeedback>
         ))}
       </ScrollView>
@@ -45,7 +46,7 @@ const Header = () => {
   return (
     <View style={styles.header}>
       <View style={styles.headerBody} />
-      <View style={styles.headerRight}>
+      <View>
         <CastButton style={{ width: 60, height: 60, tintColor: '#fff' }} />
       </View>
     </View>
@@ -54,22 +55,23 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   header: {
-    height: 55,
     backgroundColor: '#111',
     flexDirection: 'row',
-    paddingHorizontal: 16,
+    paddingHorizontal: 5,
   },
   headerBody: {
     flex: 2,
-  },
-  headerRight: {
-    width: 50,
   },
   scrollView: {
     backgroundColor: '#222',
     paddingHorizontal: 20,
     paddingVertical: 20,
     alignItems: 'center',
+  },
+  image: {
+    width: '100%',
+    height: 350,
+    marginBottom: 20,
   },
 })
 
