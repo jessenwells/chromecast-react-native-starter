@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, ScrollView, View, Image, StatusBar, TouchableNativeFeedback, Text } from 'react-native'
 import GoogleCast, { CastButton } from 'react-native-google-cast'
-import FirebaseStorage from './lib/firebase'
+import FirebaseStorage from './firebase'
 
 const App = () => {
   const [videoPath, setVideoPath] = useState()
