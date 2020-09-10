@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { SafeAreaView, StyleSheet, ScrollView, View, Image, StatusBar, TouchableNativeFeedback, Text } from 'react-native'
+import { StyleSheet, ScrollView, View, Image, StatusBar, TouchableNativeFeedback } from 'react-native'
 import GoogleCast, { CastButton } from 'react-native-google-cast'
 import FirebaseStorage from './firebase'
 
@@ -32,7 +32,7 @@ const App = () => {
       <Header />
       <ScrollView contentContainerStyle={styles.scrollView}>
         {[...Array(5)].map((_, i) => (
-          <TouchableNativeFeedback key={i} onPress={() => this.startCast(videoPath, imagePath, '', '', 0, 0, 'video/mp4')}>
+          <TouchableNativeFeedback key={i} onPress={() => this.startCast(videoPath, imagePath, _, _, _, _, 'video/mp4')}>
             <Image source={{ uri: imagePath }} style={{ width: '100%', height: 350, marginBottom: 25 }} />
           </TouchableNativeFeedback>
         ))}
