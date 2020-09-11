@@ -3,6 +3,7 @@ package com.v1;
 import android.os.Bundle;
 
 import com.facebook.react.GoogleCastActivity;
+import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
