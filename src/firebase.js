@@ -10,7 +10,7 @@ import {
   REACT_APP_ID,
 } from '@env'
 
-// need .env file for firebase authentication
+// add .env file for firebase authentication
 
 const config = {
   apiKey: REACT_APP_API_KEY,
